@@ -1,5 +1,7 @@
 package es.capape.sports.persistence;
 
+import static javax.persistence.GenerationType.AUTO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +18,7 @@ import javax.persistence.Id;
 public class Team {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = AUTO)
     private Long id;
 
     @Column(nullable = false, unique = true)

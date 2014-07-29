@@ -22,6 +22,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<!--  <prop key="hibernate.current_session_context_class">thread</prop> -->
 			</props>
 		</property>
 		<!-- Another way of indicating that we want to update the schema; Spring 
@@ -38,4 +39,5 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     
 	<tx:annotation-driven />
 
+   
 </beans>

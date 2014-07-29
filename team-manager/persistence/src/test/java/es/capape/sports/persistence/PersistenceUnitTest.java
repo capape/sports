@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
@@ -29,27 +31,32 @@ public class PersistenceUnitTest {
     }
 
     @Test
+    @Transactional
     public void shouldHaveASessionFactory() {
         assertNotNull(sessionFactory);
     }
 
     @Test
+    @Transactional
     public void shouldHaveNoObjectsAtStart() {
         List<?> results = currentSession.createQuery("from Team").list();
         assertTrue(results.isEmpty());
     }
 
     @Test
+    @Transactional
     public void shouldBeAbleToPersistAnObject() {
         assertEquals(0, currentSession.createQuery("from Team").list().size());
         Team team = new Team();
         team.setName("Maristas");
+        team.setCategory("JUNIOR");
         currentSession.persist(team);
         currentSession.flush();
         assertEquals(1, currentSession.createQuery("from Team").list().size());
     }
 
     @Test
+    @Transactional
     public void shouldBeABleToQueryForObjects() {
         shouldBeAbleToPersistAnObject();
 
