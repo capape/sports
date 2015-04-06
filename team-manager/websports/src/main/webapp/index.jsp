@@ -1,5 +1,6 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<%@ include file="/WEB-INF/views/include.jsp" %>
+<%@ page session="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%-- Redirected because we can't set the welcome page to a virtual URL. --%>
+<c:redirect url="/hello.htm"/>
