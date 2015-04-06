@@ -8,9 +8,9 @@
 		<artifactId>team-manager</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>controllers</artifactId>
-	<name>controllers</name>
-	<url>http://maven.apache.org</url>
+	<artifactId>team-manager-controllers</artifactId>
+	<name>Team Manager - Controllers Module</name>
+	<url>http://www.capape.es</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

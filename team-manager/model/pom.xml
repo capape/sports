@@ -7,8 +7,8 @@
     <artifactId>team-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>model</artifactId>
-  <name>model</name>
-  <url>http://maven.apache.org</url>
+  <artifactId>team-manager-model</artifactId>
+  <name>Team Manager - Model Module</name>
+  <url>http://www.capape.es</url>
 
 </project>

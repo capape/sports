@@ -7,9 +7,9 @@
     <artifactId>team-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>service</artifactId>
-  <name>service</name>
-  <url>http://maven.apache.org</url>
+  <artifactId>team-manager-service</artifactId>
+  <name>Team Manager - Service Module</name>
+  <url>http://www.capape.es</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

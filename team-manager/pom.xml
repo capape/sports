@@ -8,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>team-manager</name>
+	<name>Team Manager</name>
 	<url>http://www.capape.es</url>
 
 	<properties>
@@ -90,4 +90,5 @@
 		<module>service</module>
 		<module>websports</module>
 	</modules>
+	<description>Personal project whose goal is to provide a management platform to amateur sport teams.</description>
 </project>
