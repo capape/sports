@@ -49,7 +49,12 @@ public class PersistenceUnitTest {
         assertEquals(0, currentSession.createQuery("from Team").list().size());
         Team team = new Team();
         team.setName("Maristas");
-        team.setCategory("JUNIOR");
+
+        AgeCategory category = new AgeCategory();
+        category.setName("JUNIOR");
+        currentSession.persist(category);
+
+        team.setCategory(category);
         currentSession.persist(team);
         currentSession.flush();
         assertEquals(1, currentSession.createQuery("from Team").list().size());
@@ -57,7 +62,7 @@ public class PersistenceUnitTest {
 
     @Test
     @Transactional
-    public void shouldBeABleToQueryForObjects() {
+    public void shouldBeAbleToQueryForObjects() {
         shouldBeAbleToPersistAnObject();
 
         assertEquals(1,

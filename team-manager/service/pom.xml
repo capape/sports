@@ -7,8 +7,19 @@
     <artifactId>team-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>model</artifactId>
-  <name>model</name>
+  <artifactId>service</artifactId>
+  <name>service</name>
   <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
 
+    <dependency>
+    	<groupId>es.capape.sports</groupId>
+    	<artifactId>model</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+    </dependency>
+
+  </dependencies>
 </project>
