@@ -2,13 +2,13 @@ package es.capape.sports.model;
 
 import java.io.Serializable;
 
-public class Team implements Serializable {
+public class TeamVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Integer id;
 
-    public Team(Integer id) {
+    public TeamVO(Integer id) {
         this.setId(id);
     }
 
