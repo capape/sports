@@ -1,43 +1,32 @@
-package es.capape.sports.persistence;
+package es.capape.sports.domain;
 
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
  * Represents a coach
- * 
+ *
  * @author Antonio Capapé
- * 
+ *
  */
 @Entity
-public class Coach {
+public class Coach extends Person {
 
-    @Id
-    private Integer id;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4469154980438766665L;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Team> trainee;
 
     @ManyToOne
     private Club club;
-
-    @Column(nullable = false)
-    private String name;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public List<Team> getTrainee() {
         return trainee;
@@ -53,14 +42,6 @@ public class Coach {
 
     public void setClub(Club club) {
         this.club = club;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
 }

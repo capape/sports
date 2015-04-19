@@ -1,0 +1,92 @@
+body {
+	background-color: #fefefe;;
+	font-family: Consolas;
+	font-size: 10pt;
+}
+
+div.content {
+	width:100%;
+	vertical-align: top;
+}
+
+ul {
+	outline: 0px;
+}
+
+li {
+	outline: 0px;
+}
+
+.menu {
+	vertical-align: top;
+	blackground-color: white;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-left: 1px;
+	margin-right: 10px;
+	width: 10%;
+	display: inline-block;
+    border-top: 1px dashed blue;
+
+    padding: 5px;
+
+}
+
+.menu ul {
+	vertical-align: top;
+	outline: 0px;
+	background-color: white;
+	padding: 0px;
+}
+
+.menu ul li {
+	outline: 0px;
+	background-color: #dbdbdb ;
+	padding: 1px;
+	margin: 3px;
+	list-style-type: none;
+}
+.menu ul li:hover {
+    background-color: #ebebeb  ;
+}
+
+.menu ul li a {
+	display: inline-block;
+	width:100%;
+	text-decoration: none;
+	color: #000054;
+	font-weight: bold;
+}
+
+
+div.resultlist {
+	vertical-align: top;
+	display: inline-block;
+	width:80%;
+    border-top: 1px dashed blue;
+    margin: 1px;
+    padding: 5px;
+}
+.resultlist > table {
+	width: 100%;
+}
+
+.resultlist table, th, tr {
+    padding:2px;
+    margin: 2px;
+    border: 1px dashed blue;
+    border-collapse: collapse;
+
+}
+
+.resultlist table thead tr {
+	background-color: lightgray;
+}
+
+.resultlist table tbody tr:nth-child(even) {
+    background-color: lightcyan;
+}
+
+
+
+

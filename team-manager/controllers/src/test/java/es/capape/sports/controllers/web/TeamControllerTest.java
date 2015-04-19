@@ -24,12 +24,21 @@ public class TeamControllerTest {
     private TeamManager teamManager;
 
     @Test
-    public void testHandleRequest() throws Exception {
+    public void testPage() throws Exception {
 
-        ModelAndView modelAndView = controller.handleRequest(null, null);
+        ModelAndView modelAndView = controller.page(null, null);
         assertEquals("team", modelAndView.getViewName());
         assertNotNull(modelAndView.getModel());
 
     }
+
+    // @Test
+    // public void testPageJson() throws Exception {
+    //
+    // ModelAndView modelAndView = controller.pageJson(null, null);
+    // assertEquals("team", modelAndView.getViewName());
+    // assertNotNull(modelAndView.getModel());
+    //
+    // }
 
 }

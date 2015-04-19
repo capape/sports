@@ -1,4 +1,4 @@
-package es.capape.sports.persistence;
+package es.capape.sports.domain;
 
 import java.util.List;
 

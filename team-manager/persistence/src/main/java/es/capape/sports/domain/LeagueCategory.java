@@ -1,4 +1,4 @@
-package es.capape.sports.persistence;
+package es.capape.sports.domain;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -6,16 +6,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class AgeCategory {
+public class LeagueCategory {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String name;
+
+    @ManyToOne
+    private AgeCategory ageCategory;
 
     public Long getId() {
         return id;
@@ -31,6 +35,14 @@ public class AgeCategory {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AgeCategory getAgeCategory() {
+        return ageCategory;
+    }
+
+    public void setAgeCategory(AgeCategory ageCategory) {
+        this.ageCategory = ageCategory;
     }
 
 }

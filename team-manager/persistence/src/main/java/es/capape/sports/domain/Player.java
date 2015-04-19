@@ -1,29 +1,30 @@
-package es.capape.sports.persistence;
+package es.capape.sports.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
  * Represents a player
- * 
+ *
  * @author Antonio Capapé
- * 
+ *
  */
 @Entity
-public class Player {
+public class Player extends Person {
 
-    @Id
-    private Integer id;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5085973441097983864L;
 
     @ManyToOne
     private Team team;
-
-    @Column(nullable = false)
-    private String name;
 
     @Column
     private Integer height;
@@ -34,13 +35,13 @@ public class Player {
     @Column(nullable = false)
     private Date birthday;
 
-    public Integer getId() {
-        return id;
-    }
+    @ManyToMany
+    @JoinTable(name = "PLAYER_REPRESENTANT")
+    private List<Representant> representants;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @ManyToMany
+    @JoinTable(name = "PLAYER_TUTOR")
+    private List<Representant> tutors;
 
     public Team getTeam() {
         return team;
@@ -48,14 +49,6 @@ public class Player {
 
     public void setTeam(Team team) {
         this.team = team;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getHeight() {
@@ -80,6 +73,22 @@ public class Player {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public List<Representant> getRepresentants() {
+        return representants;
+    }
+
+    public void setRepresentants(List<Representant> representants) {
+        this.representants = representants;
+    }
+
+    public List<Representant> getTutors() {
+        return tutors;
+    }
+
+    public void setTutors(List<Representant> tutors) {
+        this.tutors = tutors;
     }
 
 }

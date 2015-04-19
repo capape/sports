@@ -1,6 +1,24 @@
-<%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ page session="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 <%-- Redirected because we can't set the welcome page to a virtual URL. --%>
-<c:redirect url="/hello.htm"/>
+<fmt:bundle basename="team">
+<html>
+
+<body>
+	<h1>
+		<fmt:message key="title.main.page" />
+	</h1>
+	<ul>
+		<li><a href="./team.htm"><fmt:message key="index.teams" /></a>
+		</li>
+		
+		<li><a href="./players.htm"><fmt:message key="index.players" /></a>
+		</li>
+
+		<li><a href="./coach.htm"><fmt:message key="index.coach" /></a>
+		</li>
+
+	</ul>
+</body>
+	</html>
+</fmt:bundle>
+

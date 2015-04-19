@@ -1,0 +1,2 @@
+ <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+ <link rel="stylesheet" href="<spring:theme code='styleSheet'/>" type="text/css"/>

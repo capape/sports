@@ -1,4 +1,4 @@
-package es.capape.sports.persistence;
+package es.capape.sports.domain;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -11,15 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-/**
- * Represents a Club's Team
- *
- * @author Antonio Capapé
- *
- *
- */
 @Entity
-public class Team {
+public class League {
 
     @Id
     @GeneratedValue(strategy = AUTO)
@@ -28,11 +21,11 @@ public class Team {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    private AgeCategory category;
-
     @ManyToMany
-    private List<League> competetions;
+    private List<Team> competitors;
+
+    @ManyToOne
+    private LeagueCategory category;
 
     public Long getId() {
         return id;
@@ -50,20 +43,19 @@ public class Team {
         this.name = name;
     }
 
-    public AgeCategory getCategory() {
+    public List<Team> getCompetitors() {
+        return competitors;
+    }
+
+    public void setCompetitors(List<Team> competitors) {
+        this.competitors = competitors;
+    }
+
+    public LeagueCategory getCategory() {
         return category;
     }
 
-    public void setCategory(AgeCategory category) {
+    public void setCategory(LeagueCategory category) {
         this.category = category;
     }
-
-    public List<League> getCompetetions() {
-        return competetions;
-    }
-
-    public void setCompetetions(List<League> competetions) {
-        this.competetions = competetions;
-    }
-
 }
