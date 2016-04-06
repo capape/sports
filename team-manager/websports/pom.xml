@@ -13,7 +13,8 @@
 
 	<packaging>war</packaging>
 	<name>Team Manager - WebSports </name>
-	<url>http://maven.apache.org</url>
+	<url>http://www.capape.es</url>
+
 	<dependencies>
 
 		<dependency>
@@ -38,19 +39,19 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<version>${servlet-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
+			<version>${taglibs.standard.version}</version>
 		</dependency>
 
 		<dependency>
@@ -75,6 +76,12 @@
 			<groupId>es.capape.sports</groupId>
 			<artifactId>team-manager-service</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>${tiles.version}</version>
 		</dependency>
 
 
