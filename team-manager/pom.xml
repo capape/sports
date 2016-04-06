@@ -10,6 +10,7 @@
 
 	<name>Team Manager</name>
 	<url>http://www.capape.es</url>
+	<description>Main project</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
