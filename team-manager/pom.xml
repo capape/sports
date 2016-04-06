@@ -18,10 +18,32 @@
 		<mockito.version>1.10.19</mockito.version>
 		<myfaces.version>2.2.7</myfaces.version>
 		<jackson.version>2.5.2</jackson.version>
-		<jdk.path>/Library/Java/JavaVirtualMachines/jdk1.7.0_75.jdk/Contents/Home</jdk.path>
+		<primefaces.version>5.3</primefaces.version>
+		<tiles.version>3.0.5</tiles.version>
+		<servlet-api.version>2.5</servlet-api.version>
+		<jstl.version>1.2</jstl.version>
+		<taglibs.standard.version>1.1.2</taglibs.standard.version>
+		<jdk.path>${settings.jdk.path}</jdk.path>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+
+		<dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-api</artifactId>
+            <version>${myfaces.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.myfaces.core</groupId>
+            <artifactId>myfaces-impl</artifactId>
+            <version>${myfaces.version}</version>
+        </dependency>
 
 
 		<dependency>
@@ -95,12 +117,13 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.2.9.v20150224</version>
 				<configuration>
-				    <jvmArgs>-XX:PermSize=256M -XX:MaxPermSize=512M -Xmx1024m -Xms1024m</jvmArgs>
+					<jvmArgs>-XX:PermSize=512M -XX:MaxPermSize=1024M -Xmx2048m
+						-Xms2048m</jvmArgs>
 					<httpConnector>
 						<port>9090</port>
 					</httpConnector>
 					<webApp>
-					   <contextPath>/websports</contextPath>
+						<contextPath>/websports</contextPath>
 					</webApp>
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 				</configuration>
@@ -128,8 +151,8 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.2</version>
 				<configuration>
-                    <javadocExecutable>${jdk.path}/bin/javadoc</javadocExecutable>
-                </configuration>
+					<javadocExecutable>${jdk.path}/bin/javadoc</javadocExecutable>
+				</configuration>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
