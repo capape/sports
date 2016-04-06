@@ -23,7 +23,7 @@
 		<servlet-api.version>2.5</servlet-api.version>
 		<jstl.version>1.2</jstl.version>
 		<taglibs.standard.version>1.1.2</taglibs.standard.version>
-		<jdk.path>${settings.jdk.path}</jdk.path>
+
 	</properties>
 
 	<dependencies>
@@ -150,9 +150,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.2</version>
-				<configuration>
-					<javadocExecutable>${jdk.path}/bin/javadoc</javadocExecutable>
-				</configuration>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
