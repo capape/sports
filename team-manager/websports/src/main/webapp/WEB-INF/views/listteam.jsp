@@ -12,8 +12,8 @@
 	</h1>
 	<div class="<spring:theme code='menu'/>">
 		<ul>
-			<li><a href="./addteam.htm"></a><fmt:message key="team.add" /></a></li>
-			<li><a href="./searchteam.htm"><fmt:message key="team.search" /></li>
+			<li><a href="./addteam.htm"></a><fmt:message key="team.add" /></li>
+			<li><a href="./searchteam.htm"></a><fmt:message key="team.search"/></li>
 		</ul>
 	</div>
 	<div class="<spring:theme code='resultlist'/>">

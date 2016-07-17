@@ -12,7 +12,7 @@
         <fmt:message key="team.home.page.title" />
     </h1>
 </div>
-<div class="content">    
+<div class="content">
     <div class="menu">
         <ul>
             <li><a href="./addteam.htm"><fmt:message key="team.add" /></a></li>
@@ -20,25 +20,25 @@
         </ul>
     </div>
     <div class="resultlist">
-    
-    <table>     
-        <caption><fmt:message key="team.number" />${fn:length(model.teams)}</caption>   
+
+    <table>
+        <caption><fmt:message key="team.number" />${fn:length(model.teams)}</caption>
         <thead>
             <tr>
                 <td><fmt:message key="team.header.id" /></td>
                 <td><fmt:message key="team.header.name" /></td>
                 <td><fmt:message key="team.header.category" /></td>
                 <td></td>
-            </tr>        
+            </tr>
         </thead>
         <c:if test="${fn:length(model.teams) gt 0}">
         <tbody>
             <c:forEach items="${model.teams}" var="team">
-                <tr>                    
+                <tr>
                         <td><span><c:out value="${team.id}" default=""/></span></td>
                         <td><span><c:out value="${team.name}" default="" escapeXml="true" /></span></td>
                         <td><span><c:out value="${team.category.name}" default="" escapeXml="true" /></span></td>
-                        <td><span><fmt:message key="team.edit" /></span></td>                    
+                        <td><span><fmt:message key="team.edit" /></span></td>
                 </tr>
             </c:forEach>
          </tbody>

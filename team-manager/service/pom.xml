@@ -5,7 +5,7 @@
   <parent>
     <groupId>es.capape.sports</groupId>
     <artifactId>team-manager</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>team-manager-service</artifactId>
   <name>Team Manager - Service Module</name>
@@ -26,7 +26,6 @@
         <artifactId>team-manager-persistence</artifactId>
         <version>${project.version}</version>
     </dependency>
-
 
   </dependencies>
 </project>
