@@ -10,3 +10,5 @@ bin
 /bin
 /.pmd
 /pom.xml.versionsBackup
+/.springBeans
+/.tern-project
