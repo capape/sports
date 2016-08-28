@@ -1,0 +1,123 @@
+
+<?xml version="1.0"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>es.capape.sports</groupId>
+        <artifactId>team-manager</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <groupId>es.capape.sports</groupId>
+    <artifactId>docker-image</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Team Manager - Docker Image</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <server.version>8.0-jre8</server.version>
+        <server.name>tomcat</server.name>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <websports.port>18080</websports.port>
+        <catalina.base>/usr/local/tomcat</catalina.base>
+    </properties>
+
+    <dependencies>
+        <!-- Dependencies with their version which are referenced from the
+            src/main/docker-assembly.xml descriptor. These are the WAR files which gets
+            stored in the data docker container which then is linked into tomcat container
+            for deployment -->
+
+        <dependency>
+            <groupId>es.capape.sports</groupId>
+            <artifactId>team-manager-websports</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <extensions>true</extensions> <!-- enables using 'docker' packaging above -->
+                <configuration>
+                    <watchInterval>500</watchInterval>
+                    <logDate>default</logDate>
+                    <verbose>true</verbose>
+                    <autoPull>always</autoPull>
+
+                    <dockerHost>tcp://192.168.99.100:2376</dockerHost>
+                    <certPath>/Users/antonio/.docker/machine/machines/default</certPath>
+
+                    <watchPostGoal>org.apache.maven.plugins:maven-help-plugin:help</watchPostGoal>
+                    <images>
+                        <!-- Docker Image to use -->
+                        <image>
+                            <!-- App-Server Image -->
+                            <alias>team-manager-docker</alias>
+                            <name>capape/teammanager:%t</name>
+                            <build>
+                                <from>${server.name}:${server.version}</from>
+                                <assembly>
+                                    <mode>dir</mode>
+                                    <basedir>${catalina.base}/webapps</basedir>
+                                    <descriptor>assembly.xml</descriptor>
+                                </assembly>
+                            </build>
+                            <run>
+                                <namingStrategy>alias</namingStrategy>
+
+                                <env>
+                                    <CATALINA_OPTS>-Xmx512m -Dcatalina.base=${catalina.base}</CATALINA_OPTS>
+                                </env>
+
+                                <envPropertyFile>${project.basedir}/src/main/docker/environment.properties</envPropertyFile>
+
+                                <ports>
+                                    <port>${websports.port}:8080</port>
+                                </ports>
+                                <wait>
+                                    <!-- The plugin waits until this URL
+                                        is reachable via HTTP ... -->
+                                    <log>Server startup</log>
+                                    <http>
+                                        <url>http://${docker.host.address}:${websports.port}</url>
+                                        <method>GET</method>
+                                        <status>200</status>
+                                    </http>
+                                    <exec>
+                                        <postStart>ls -l /maven</postStart>
+                                    </exec>
+                                    <time>100000</time>
+                                    <shutdown>500</shutdown>
+                                </wait>
+                                <log>
+                                    <enabled>true</enabled>
+                                    <color>red</color>
+                                </log>
+                                <ulimits>
+                                    <ulimit>
+                                        <name>memlock</name>
+                                        <hard>2048</hard>
+                                        <soft>1024</soft>
+                                    </ulimit>
+                                </ulimits>
+                            </run>
+                            <watch>
+                                <mode>none</mode>
+                            </watch>
+                        </image>
+
+                    </images>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
