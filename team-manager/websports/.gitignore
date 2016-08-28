@@ -8,3 +8,5 @@ bin
 /.project
 /.settings
 /bin
+/.pmd
+/pom.xml.versionsBackup
