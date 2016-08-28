@@ -1,7 +1,6 @@
 package es.capape.sports.domain;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,18 +28,18 @@ public class Coach extends Person {
     private Club club;
 
     public List<Team> getTrainee() {
-        return trainee;
+        return this.trainee;
     }
 
-    public void setTrainee(List<Team> trainee) {
+    public void setTrainee(final List<Team> trainee) {
         this.trainee = trainee;
     }
 
     public Club getClub() {
-        return club;
+        return this.club;
     }
 
-    public void setClub(Club club) {
+    public void setClub(final Club club) {
         this.club = club;
     }
 

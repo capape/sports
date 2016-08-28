@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
-			<version>${javaee-web-api.version}</version> <!-- Put here the version of your Java EE app, in my case 7.0 -->
+			<version>${javaee-web-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -78,12 +78,6 @@
 			<groupId>es.capape.sports</groupId>
 			<artifactId>team-manager-service</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-extras</artifactId>
-			<version>${tiles.version}</version>
 		</dependency>
 
 

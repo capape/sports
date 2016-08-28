@@ -1,9 +1,8 @@
 package es.capape.sports.domain;
 
 import static javax.persistence.GenerationType.AUTO;
-
+import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class League {
+public class League implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -4797315954662913586L;
 
     @Id
     @GeneratedValue(strategy = AUTO)
@@ -28,34 +32,34 @@ public class League {
     private LeagueCategory category;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public List<Team> getCompetitors() {
-        return competitors;
+        return this.competitors;
     }
 
-    public void setCompetitors(List<Team> competitors) {
+    public void setCompetitors(final List<Team> competitors) {
         this.competitors = competitors;
     }
 
     public LeagueCategory getCategory() {
-        return category;
+        return this.category;
     }
 
-    public void setCategory(LeagueCategory category) {
+    public void setCategory(final LeagueCategory category) {
         this.category = category;
     }
 }

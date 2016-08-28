@@ -1,8 +1,7 @@
 package es.capape.sports.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinTable;
@@ -33,7 +32,7 @@ public class Player extends Person {
     private Integer weight;
 
     @Column(nullable = false)
-    private Date birthday;
+    private LocalDate birthday;
 
     @ManyToMany
     @JoinTable(name = "PLAYER_REPRESENTANT")
@@ -44,50 +43,50 @@ public class Player extends Person {
     private List<Representant> tutors;
 
     public Team getTeam() {
-        return team;
+        return this.team;
     }
 
-    public void setTeam(Team team) {
+    public void setTeam(final Team team) {
         this.team = team;
     }
 
     public Integer getHeight() {
-        return height;
+        return this.height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(final Integer height) {
         this.height = height;
     }
 
     public Integer getWeight() {
-        return weight;
+        return this.weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(final Integer weight) {
         this.weight = weight;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public LocalDate getBirthday() {
+        return this.birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(final LocalDate birthday) {
         this.birthday = birthday;
     }
 
     public List<Representant> getRepresentants() {
-        return representants;
+        return this.representants;
     }
 
-    public void setRepresentants(List<Representant> representants) {
+    public void setRepresentants(final List<Representant> representants) {
         this.representants = representants;
     }
 
     public List<Representant> getTutors() {
-        return tutors;
+        return this.tutors;
     }
 
-    public void setTutors(List<Representant> tutors) {
+    public void setTutors(final List<Representant> tutors) {
         this.tutors = tutors;
     }
 

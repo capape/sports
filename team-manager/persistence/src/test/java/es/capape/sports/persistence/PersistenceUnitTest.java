@@ -3,20 +3,16 @@ package es.capape.sports.persistence;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
-
 import es.capape.sports.domain.AgeCategory;
 import es.capape.sports.domain.Team;
 
@@ -24,56 +20,56 @@ import es.capape.sports.domain.Team;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PersistenceUnitTest {
 
-    @Autowired
-    private SessionFactory sessionFactory;
-    private Session currentSession;
+    @Resource(name = "testEntityManagerFactory")
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
 
     @Before
     public void openSession() {
-        currentSession = sessionFactory.getCurrentSession();
+        this.entityManager = this.entityManagerFactory.createEntityManager();
+        this.entityManager.getTransaction().begin();
+    }
+
+    @After
+    public void closeSession() {
+        this.entityManager.getTransaction().rollback();
     }
 
     @Test
-    @Transactional
-    public void shouldHaveASessionFactory() {
-        assertNotNull(sessionFactory);
+    public void shouldHaveAEntityManagerFactory() {
+        assertNotNull(this.entityManagerFactory);
     }
 
     @Test
-    @Transactional
     public void shouldHaveNoObjectsAtStart() {
-        List<?> results = currentSession.createQuery("from Team").list();
+        final List<?> results = this.entityManager.createQuery("from Team").getResultList();
         assertTrue(results.isEmpty());
     }
 
     @Test
-    @Transactional
     public void shouldBeAbleToPersistAnObject() {
-        assertEquals(0, currentSession.createQuery("from Team").list().size());
-        Team team = new Team();
+        assertEquals(0, this.entityManager.createQuery("from Team").getResultList().size());
+        final Team team = new Team();
         team.setName("Maristas");
 
-        AgeCategory category = new AgeCategory();
+        final AgeCategory category = new AgeCategory();
         category.setName("JUNIOR");
-        currentSession.persist(category);
+        this.entityManager.persist(category);
 
         team.setCategory(category);
-        currentSession.persist(team);
-        currentSession.flush();
-        assertEquals(1, currentSession.createQuery("from Team").list().size());
+        this.entityManager.persist(team);
+        this.entityManager.flush();
+        assertEquals(1, this.entityManager.createQuery("from Team").getResultList().size());
     }
 
     @Test
-    @Transactional
     public void shouldBeAbleToQueryForObjects() {
         shouldBeAbleToPersistAnObject();
 
         assertEquals(1,
-                currentSession.createQuery("from Team where name = 'Maristas'")
-                        .list().size());
+                this.entityManager.createQuery("from Team where name = 'Maristas'").getResultList().size());
         assertEquals(0,
-                currentSession.createQuery("from Team where name = 'Maristaz'")
-                        .list().size());
+                this.entityManager.createQuery("from Team where name = 'Maristaz'").getResultList().size());
     }
 
 }

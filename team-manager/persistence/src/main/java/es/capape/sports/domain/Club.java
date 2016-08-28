@@ -1,7 +1,7 @@
 package es.capape.sports.domain;
 
+import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +12,17 @@ import javax.persistence.OneToMany;
 
 /**
  * Entity which represents a club. A club have several at least one team.
- * 
+ *
  * @author Antonio Capapé
- * 
+ *
  */
 @Entity
-public class Club {
+public class Club implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 3856200212109362563L;
 
     @Id
     @GeneratedValue
@@ -33,34 +38,34 @@ public class Club {
     private List<Team> teams;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public String getSite() {
-        return site;
+        return this.site;
     }
 
-    public void setSite(String site) {
+    public void setSite(final String site) {
         this.site = site;
     }
 
     public List<Team> getTeams() {
-        return teams;
+        return this.teams;
     }
 
-    public void setTeams(List<Team> teams) {
+    public void setTeams(final List<Team> teams) {
         this.teams = teams;
     }
 

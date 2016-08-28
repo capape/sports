@@ -1,7 +1,7 @@
 package es.capape.sports.domain;
 
 import static javax.persistence.GenerationType.AUTO;
-
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class LeagueCategory {
+public class LeagueCategory implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2043347957624410877L;
 
     @Id
     @GeneratedValue(strategy = AUTO)
@@ -22,26 +27,26 @@ public class LeagueCategory {
     private AgeCategory ageCategory;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public AgeCategory getAgeCategory() {
-        return ageCategory;
+        return this.ageCategory;
     }
 
-    public void setAgeCategory(AgeCategory ageCategory) {
+    public void setAgeCategory(final AgeCategory ageCategory) {
         this.ageCategory = ageCategory;
     }
 
