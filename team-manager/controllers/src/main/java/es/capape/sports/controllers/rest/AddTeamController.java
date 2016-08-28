@@ -1,4 +1,4 @@
-package es.capape.sports.controllers.web;
+package es.capape.sports.controllers.rest;
 
 import java.util.HashMap;
 import java.util.Map;
