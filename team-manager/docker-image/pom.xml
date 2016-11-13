@@ -9,9 +9,7 @@
         <artifactId>team-manager</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <groupId>es.capape.sports</groupId>
     <artifactId>docker-image</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <name>Team Manager - Docker Image</name>
     <url>http://maven.apache.org</url>
 
@@ -51,9 +49,10 @@
                     <verbose>true</verbose>
                     <autoPull>always</autoPull>
 
+                    <!--
                     <dockerHost>tcp://192.168.99.100:2376</dockerHost>
                     <certPath>/Users/antonio/.docker/machine/machines/default</certPath>
-
+-->
                     <watchPostGoal>org.apache.maven.plugins:maven-help-plugin:help</watchPostGoal>
                     <images>
                         <!-- Docker Image to use -->

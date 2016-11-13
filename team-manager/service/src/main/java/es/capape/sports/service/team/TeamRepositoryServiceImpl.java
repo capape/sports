@@ -19,10 +19,10 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
     private static final char WILDCHAR = '%';
 
     @Autowired
-    TeamRepository teamRespository;
+    private TeamRepository teamRepository;
 
     @Resource(name = "teamMapper")
-    TeamMapper teamMapper;
+    private TeamMapper teamMapper;
 
     @Override
     public TeamVO createTeam(TeamVO teamVO) {
@@ -33,7 +33,7 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
 
         final Team team = this.teamMapper.createTeamFromTeamVO(teamVO);
 
-        final Team teamCreated = this.teamRespository.save(team);
+        final Team teamCreated = this.teamRepository.save(team);
 
         final TeamVO teamCreatedVO = this.teamMapper.createTeamVOFromTeam(teamCreated);
 
@@ -42,8 +42,8 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
 
     @Override
     public List<TeamVO> getAll() {
-        final Sort sort = new Sort(Direction.ASC, "name");
-        final List<Team> teams = this.teamRespository.findAll(sort);
+      //  final Sort sort = new Sort(Direction.ASC, "name");
+        final List<Team> teams = this.teamRepository.findAll();
         final List<TeamVO> result = this.teamMapper.createTeamVOsFromTeams(teams);
         return result;
     }
@@ -51,7 +51,7 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
     @Override
     public TeamVO getTeam(Long teamId) {
 
-        final Team team = this.teamRespository.findOne(teamId);
+        final Team team = this.teamRepository.findOne(teamId);
 
         final TeamVO teamVO = this.teamMapper.createTeamVOFromTeam(team);
 
@@ -68,7 +68,7 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
         searchPattern.append(WILDCHAR);
         searchPattern.insert(0, WILDCHAR);
 
-        final List<Team> teams = this.teamRespository.getTeamsByName(searchPattern.toString(), page);
+        final List<Team> teams = this.teamRepository.getTeamsByName(searchPattern.toString(), page);
         final List<TeamVO> result = this.teamMapper.createTeamVOsFromTeams(teams);
         return result;
     }

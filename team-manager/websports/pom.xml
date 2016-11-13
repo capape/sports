@@ -80,6 +80,13 @@
 			<version>${project.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlets</artifactId>
+			<version>${jetty-maven.version}</version>
+		</dependency>
+
+
 
 	</dependencies>
 	<build>
