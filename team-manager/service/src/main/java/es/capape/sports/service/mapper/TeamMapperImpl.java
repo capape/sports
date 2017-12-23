@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import es.capape.sports.domain.AgeCategory;
 import es.capape.sports.domain.League;
 import es.capape.sports.domain.Team;
-import es.capape.sports.model.vo.AgeCategoryVO;
-import es.capape.sports.model.vo.LeagueVO;
-import es.capape.sports.model.vo.TeamVO;
+import es.capape.sports.model.dto.AgeCategoryDTO;
+import es.capape.sports.model.dto.LeagueDTO;
+import es.capape.sports.model.dto.TeamDTO;
 
 @Component("teamMapper")
 public class TeamMapperImpl implements TeamMapper {
@@ -24,7 +24,7 @@ public class TeamMapperImpl implements TeamMapper {
     private LeagueMapper leagueMapper;
 
     @Override
-    public Team createTeamFromTeamVO(TeamVO teamVO) {
+    public Team createTeamFromTeamVO(TeamDTO teamVO) {
         final Team team = new Team();
         team.setId(teamVO.id);
         team.setName(teamVO.name);
@@ -39,23 +39,23 @@ public class TeamMapperImpl implements TeamMapper {
     }
 
     @Override
-    public TeamVO createTeamVOFromTeam(Team team) {
-        final TeamVO teamVO = new TeamVO();
+    public TeamDTO createTeamVOFromTeam(Team team) {
+        final TeamDTO teamVO = new TeamDTO();
         teamVO.id = team.getId();
         teamVO.name = team.getName();
 
-        final AgeCategoryVO categoryVO = this.categoryMapper.createCategoryVOFromCategory(team.getCategory());
+        final AgeCategoryDTO categoryVO = this.categoryMapper.createCategoryVOFromCategory(team.getCategory());
         teamVO.category = categoryVO;
 
-        final List<LeagueVO> leagues = this.leagueMapper.createLeaguesVOFromLeagues(team.getLeagues());
+        final List<LeagueDTO> leagues = this.leagueMapper.createLeaguesVOFromLeagues(team.getLeagues());
         teamVO.leagues = leagues;
 
         return teamVO;
     }
 
     @Override
-    public List<TeamVO> createTeamVOsFromTeams(List<Team> teams) {
-        final List<TeamVO> result = new ArrayList<>();
+    public List<TeamDTO> createTeamVOsFromTeams(List<Team> teams) {
+        final List<TeamDTO> result = new ArrayList<>();
 
         for (final Team team : teams) {
             result.add(createTeamVOFromTeam(team));

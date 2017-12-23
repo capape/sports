@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 import es.capape.sports.domain.Team;
-import es.capape.sports.model.vo.TeamVO;
+import es.capape.sports.model.dto.TeamDTO;
 import es.capape.sports.repositories.TeamRepository;
 import es.capape.sports.service.mapper.TeamMapper;
 
@@ -25,7 +25,7 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
     private TeamMapper teamMapper;
 
     @Override
-    public TeamVO createTeam(TeamVO teamVO) {
+    public TeamDTO createTeam(TeamDTO teamVO) {
 
         if (teamVO.id != null) {
             throw new RuntimeException("Creating team but id already assigned");
@@ -35,32 +35,32 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
 
         final Team teamCreated = this.teamRepository.save(team);
 
-        final TeamVO teamCreatedVO = this.teamMapper.createTeamVOFromTeam(teamCreated);
+        final TeamDTO teamCreatedVO = this.teamMapper.createTeamVOFromTeam(teamCreated);
 
         return teamCreatedVO;
     }
 
     @Override
-    public List<TeamVO> getAll() {
+    public List<TeamDTO> getAll() {
       //  final Sort sort = new Sort(Direction.ASC, "name");
         final List<Team> teams = this.teamRepository.findAll();
-        final List<TeamVO> result = this.teamMapper.createTeamVOsFromTeams(teams);
+        final List<TeamDTO> result = this.teamMapper.createTeamVOsFromTeams(teams);
         return result;
     }
 
     @Override
-    public TeamVO getTeam(Long teamId) {
+    public TeamDTO getTeam(Long teamId) {
 
         final Team team = this.teamRepository.findOne(teamId);
 
-        final TeamVO teamVO = this.teamMapper.createTeamVOFromTeam(team);
+        final TeamDTO teamVO = this.teamMapper.createTeamVOFromTeam(team);
 
         return teamVO;
 
     }
 
     @Override
-    public List<TeamVO> getByName(String name, int pageIndex, int pageSize) {
+    public List<TeamDTO> getByName(String name, int pageIndex, int pageSize) {
 
         final Pageable page = new PageRequest(pageIndex, pageSize, Sort.Direction.ASC, "name");
 
@@ -69,7 +69,7 @@ public class TeamRepositoryServiceImpl implements TeamRepositoryService {
         searchPattern.insert(0, WILDCHAR);
 
         final List<Team> teams = this.teamRepository.getTeamsByName(searchPattern.toString(), page);
-        final List<TeamVO> result = this.teamMapper.createTeamVOsFromTeams(teams);
+        final List<TeamDTO> result = this.teamMapper.createTeamVOsFromTeams(teams);
         return result;
     }
 

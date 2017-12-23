@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import es.capape.sports.model.vo.ErrorVO;
+
+import es.capape.sports.model.dto.ErrorDTO;
 
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -15,7 +16,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler(value = { Exception.class, RuntimeException.class })
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
 
-        final ErrorVO error = new ErrorVO();
+        final ErrorDTO error = new ErrorDTO();
         error.code = ex.getMessage();
         error.message = ex.getLocalizedMessage();
 

@@ -1,8 +1,8 @@
-package es.capape.sports.model.vo;
+package es.capape.sports.model.dto;
 
 import java.io.Serializable;
 
-public class AgeCategoryVO implements Serializable {
+public class AgeCategoryDTO implements Serializable {
 
     /**
      *

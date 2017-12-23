@@ -1,12 +1,12 @@
 package es.capape.sports.service.mapper;
 
 import es.capape.sports.domain.AgeCategory;
-import es.capape.sports.model.vo.AgeCategoryVO;
+import es.capape.sports.model.dto.AgeCategoryDTO;
 
 public interface CategoryMapper {
 
-    AgeCategory createCategoryFromCategoryVO(AgeCategoryVO category);
+    AgeCategory createCategoryFromCategoryVO(AgeCategoryDTO category);
 
-    AgeCategoryVO createCategoryVOFromCategory(AgeCategory category);
+    AgeCategoryDTO createCategoryVOFromCategory(AgeCategory category);
 
 }

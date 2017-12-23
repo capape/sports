@@ -5,19 +5,19 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import es.capape.sports.domain.League;
-import es.capape.sports.model.vo.LeagueVO;
+import es.capape.sports.model.dto.LeagueDTO;
 
 @Component("leagueMapper")
 public class LeagueMapperImpl implements LeagueMapper {
 
     @Override
-    public List<League> createLeaguesFromLeaguesVO(List<LeagueVO> leagues) {
+    public List<League> createLeaguesFromLeaguesVO(List<LeagueDTO> leagues) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public List<LeagueVO> createLeaguesVOFromLeagues(List<League> leagues) {
+    public List<LeagueDTO> createLeaguesVOFromLeagues(List<League> leagues) {
         // TODO Auto-generated method stub
         return null;
     }

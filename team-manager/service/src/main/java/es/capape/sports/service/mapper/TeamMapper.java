@@ -3,14 +3,14 @@ package es.capape.sports.service.mapper;
 import java.util.List;
 
 import es.capape.sports.domain.Team;
-import es.capape.sports.model.vo.TeamVO;
+import es.capape.sports.model.dto.TeamDTO;
 
 public interface TeamMapper {
 
-    Team createTeamFromTeamVO(TeamVO teamVO);
+    Team createTeamFromTeamVO(TeamDTO teamVO);
 
-    TeamVO createTeamVOFromTeam(Team team);
+    TeamDTO createTeamVOFromTeam(Team team);
 
-    List<TeamVO> createTeamVOsFromTeams(List<Team> teams);
+    List<TeamDTO> createTeamVOsFromTeams(List<Team> teams);
 
 }

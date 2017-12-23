@@ -1,8 +1,8 @@
-package es.capape.sports.model.vo;
+package es.capape.sports.model.dto;
 
 import java.io.Serializable;
 
-public class LeagueCategoryVO implements Serializable {
+public class LeagueCategoryDTO implements Serializable {
 
     /**
      *
@@ -13,5 +13,5 @@ public class LeagueCategoryVO implements Serializable {
 
     public String name;
 
-    public AgeCategoryVO ageCategory;
+    public AgeCategoryDTO ageCategory;
 }

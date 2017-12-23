@@ -2,16 +2,16 @@ package es.capape.sports.service.team;
 
 import java.util.List;
 
-import es.capape.sports.model.vo.TeamVO;
+import es.capape.sports.model.dto.TeamDTO;
 
 public interface TeamRepositoryService {
 
-    TeamVO createTeam(TeamVO team);
+    TeamDTO createTeam(TeamDTO team);
 
-    List<TeamVO> getAll();
+    List<TeamDTO> getAll();
 
-    TeamVO getTeam(Long teamId);
+    TeamDTO getTeam(Long teamId);
 
-    List<TeamVO> getByName(String name, int page, int pageSize);
+    List<TeamDTO> getByName(String name, int page, int pageSize);
 
 }

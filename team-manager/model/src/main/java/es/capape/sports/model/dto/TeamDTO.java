@@ -1,9 +1,9 @@
-package es.capape.sports.model.vo;
+package es.capape.sports.model.dto;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class TeamVO implements Serializable {
+public class TeamDTO implements Serializable {
 
     private static final long serialVersionUID = -7362045273415984710L;
 
@@ -11,7 +11,7 @@ public class TeamVO implements Serializable {
 
     public String name;
 
-    public AgeCategoryVO category;
+    public AgeCategoryDTO category;
 
-    public List<LeagueVO> leagues;
+    public List<LeagueDTO> leagues;
 }

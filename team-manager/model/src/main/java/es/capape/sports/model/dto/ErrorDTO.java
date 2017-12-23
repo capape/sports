@@ -1,8 +1,8 @@
-package es.capape.sports.model.vo;
+package es.capape.sports.model.dto;
 
 import java.io.Serializable;
 
-public class ErrorVO implements Serializable {
+public class ErrorDTO implements Serializable {
 
     /**
      *

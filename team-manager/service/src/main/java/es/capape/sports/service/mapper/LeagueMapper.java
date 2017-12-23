@@ -3,12 +3,12 @@ package es.capape.sports.service.mapper;
 import java.util.List;
 
 import es.capape.sports.domain.League;
-import es.capape.sports.model.vo.LeagueVO;
+import es.capape.sports.model.dto.LeagueDTO;
 
 public interface LeagueMapper {
 
-    List<League> createLeaguesFromLeaguesVO(List<LeagueVO> leagues);
+    List<League> createLeaguesFromLeaguesVO(List<LeagueDTO> leagues);
 
-    List<LeagueVO> createLeaguesVOFromLeagues(List<League> leagues);
+    List<LeagueDTO> createLeaguesVOFromLeagues(List<League> leagues);
 
 }
